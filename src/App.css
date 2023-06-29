@@ -1,0 +1,30 @@
+.formulario{
+    width: 50%;
+    margin: 25px;
+}
+.prueba{
+    display: flex;
+}
+.label{
+    margin: 2px;
+}
+.separate{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+@media only screen and (max-width: 767px) {
+    .formulario{
+        width: 100%;
+        margin: 0;
+    }
+    .prueba{    
+        display: flex;
+        flex-direction: column;
+    }
+    .btnMobile{
+        width: 100%;
+    }
+    
+}
