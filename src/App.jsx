@@ -3,9 +3,12 @@ import Formulario from './components/Formulario'
 import ListaTareas from './components/ListaTareas'
 import { useEffect, useState } from 'react'
 
+const storedTodos = localStorage.getItem('todos')
+const initialState = storedTodos ? JSON.parse(storedTodos) : []
+
 function App() {
 
-const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos') || []))
+const [todos, setTodos] = useState(initialState)
 useEffect(()=> {
   localStorage.setItem('todos', JSON.stringify(todos))
 }, [todos])
