@@ -8,13 +8,13 @@ function Todo({ todo, deleteTodo, completeTodo}) {
                 <div className="d-flex justify-content-between">
                     <h5 className={`${state && 'text-decoration-line-through'}`}>{title}</h5>
                   <div> 
-                      {priority ? <span className="badge text-bg-warning text-light"> Importante </span> : <p></p>}
+                      {priority ? <span className="badge text-bg-warning text-light"> ⚠️Important </span> : <p></p>}
                     </div>
                 </div>
                     <p>{description}</p>
                     <div className="d-flex gap-2">
-                        <button className="btn btn-sm btn-danger" onClick={() => deleteTodo(id)}>Eliminar</button>
-                        <button className={state? "btn btn-sm btn-warning" : "btn btn-sm btn-success"} onClick={() => completeTodo(id)}>{state ? "Marcar incompleto" : "Marcar completado"}</button>
+                        <button className="btn btn-sm btn-danger" onClick={() => deleteTodo(id)}>✖️Delete</button>
+                        <button className={state? "btn btn-sm btn-warning" : "btn btn-sm btn-success"} onClick={() => completeTodo(id)}>{state ? "➖Mark as incompleted" : "✅Mark as completed"}</button>
                     </div>
                 </div>
                 
