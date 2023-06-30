@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import '../App.css'
-function Controlado() {
+import Swal from 'sweetalert2'
+function Formulario({addTodo}) {
+    /*Validaciones en el momento*/
     const [verify, setverify] = useState()
     const [todo, setTodo] = useState({
         title: '',
@@ -9,20 +11,41 @@ function Controlado() {
         state: '',
         priority: false
     })
+
+    const {title, description, state, priority} = todo
     const handleSubmit = (e) => {
         e.preventDefault()
+        if(!title.trim() || !description.trim())
+        {
+            return Swal.fire({
+             icon: "error",
+             title: "Campos incompletos",
+             text: "Usted dejó campos sin llenar", 
+             timer: 3000})
+        }else{
+            addTodo({
+                id: Date.now(),
+                ...todo,
+                state: state === "completado"
+
+            })
+            Swal.fire({
+                icon: "success",
+                title: "Se ha agregado la tarea", 
+                timer: 3000})
+        }
     }
     const handleChange = (e) => {
-        console.log(e.target.type)
+        setverify("")
         setTodo({ ...todo, 
             [e.target.name]: e.target.value 
             })
-        setverify("")
-        if (!todo.title.trim() || !todo.description.trim()) {
+       
+        if (todo.title.trim() === "" || todo.description.trim() === "") {
             setverify("Hay campos sin llenar")
         }
     }
-
+    
 
     return (
         <>
@@ -45,11 +68,11 @@ function Controlado() {
                     verify !== '' && verify
                 }
                 <p>
-                    <button className='btn btn-primary btnMobile' type="submit">Procesar</button>
+                    <button className='btn btn-primary btnMobile' type="submit" onClick={handleSubmit}>Agregar</button>
                 </p>
             </form>
         </>
     )
 }
 
-export default Controlado
+export default Formulario

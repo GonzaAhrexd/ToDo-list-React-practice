@@ -2,6 +2,9 @@
     width: 50%;
     margin: 25px;
 }
+.extend{
+    width: 50%;
+}
 .prueba{
     display: flex;
 }
@@ -14,6 +17,7 @@
     justify-content: flex-start;
     align-items: center;
 }
+
 @media only screen and (max-width: 767px) {
     .formulario{
         width: 100%;
@@ -24,6 +28,9 @@
         flex-direction: column;
     }
     .btnMobile{
+        width: 100%;
+    }
+    .extend{
         width: 100%;
     }
     

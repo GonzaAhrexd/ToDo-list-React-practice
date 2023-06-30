@@ -1,25 +1,18 @@
 import React from 'react'
-
-function ListaTareas(props) {
+import Todo from './Todo'
+import '../App.css'
+function ListaTareas({ todos, deleteTodo, completeTodo }) {
   return (
-    <table className="table">
-    <thead>
-      <tr>
-        <th scope="col">Tarea</th>
-        <th scope="col">Descripción</th>
-        <th scope="col">Estado</th>
-      </tr>
-    </thead>
-    <tbody>
-   
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-    </tbody>
-  </table>
+    <div>
+      <h1>Tareas</h1>
+      <ul className='list-group'>
+        {todos.length==0 ? <li className="list-group-item text-center">No hay todo</li> 
+         : todos.map(todo => (
+            <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo}  completeTodo={completeTodo}></Todo>
+          ))
+        }
+      </ul>
+    </div>
   )
 }
 
